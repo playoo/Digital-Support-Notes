@@ -16,7 +16,7 @@ import ThemeSwitcher from '@site/src/components/ThemeSwitcher';
 import LayoutHead from '@theme/LayoutHead';
 import useKeyboardNavigation from '@theme/hooks/useKeyboardNavigation';
 import { ThemeClassNames } from '@docusaurus/theme-common';
-import { Analytics } from '@vercel/analytics/react';
+import Head from '@docusaurus/Head';
 import './styles.css';
 import { func } from 'prop-types';
 
@@ -70,7 +70,9 @@ function Layout(props) {
         {children}
       </div>
       {!noFooter && <Footer />}
-      <Analytics />
+      <Head>
+        <script defer data-domain="notes.nayanpatel.net" src="https://plausible-analytics-ce-production-19ff.up.railway.app/js/script.js"></script>
+      </Head>
     </LayoutProviders>
   );
 }
