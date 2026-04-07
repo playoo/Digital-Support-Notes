@@ -1,161 +1,125 @@
-/* eslint-disable */
-const { tailwindPlugin, webpackPlugin } = require('./src/plugins');
-const isDev = process.env.NODE_ENV === 'development';
-const pageRef = require('./src/plugins/pageRef');
+---
+sidebar_position: 1
+title: 👋 欢迎！
+---
 
-// 文档通用配置
-const pageOptions = {
-  sidebarCollapsible: false,
-  editUrl: 'https://github.com/playoo/Digital-Support-Notes/edit/main/Website/',
-  showLastUpdateAuthor: true,
-  showLastUpdateTime: true,
-  beforeDefaultRemarkPlugins: [pageRef],
-};
+这里是数字支持服务的全部笔记。你可以点击下方按钮开始阅读，也可以参与贡献，帮助完善笔记内容！
 
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-module.exports = {
-  scripts: [
-    { src: "https://status.notes.nayanpatel.net/widget/script.js" }
-  ],
+<!--truncate-->
 
-  title: '数字支持服务笔记',
-  tagline: '欢迎贡献笔记，一起学习成长！🚀',
-  url: 'https://notes.nayanpatel.net',
-  baseUrl: '/',
-  onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'favicon.ico',
-  organizationName: 'Nayan-Web',
-  projectName: 'Digital-Support-Notes',
-  clientModules: [require.resolve('./src/css/tailwind.css')],
+import Link from '@docusaurus/Link';
+import GridLink from '@site/src/components/GridLink';
+import GetStartedCard from '@site/src/components/GetStartedCard';
+import {
+  DeviceTabletIcon,
+  CodeIcon,
+  QuestionMarkCircleIcon,
+} from '@heroicons/react/solid';
+import {
+  Discord as DiscordIcon,
+} from '@styled-icons/boxicons-logos';
+import {
+  ReactIcon,
+  FlutterIcon,
+  JSIcon,
+  AndroidIcon,
+  AppleIcon,
+  SDKIcon,
+  APIIcon,
+  ReactRevolveIcon,
+  KotlinIcon,
+  SwiftIcon,
+  ReactNativeIcon,
+} from '@site/src/assets/icons';
+import { HashChange } from '@site/src/components/HashChange';
 
-  themeConfig: {
-    umami: {
-      websiteid: "67a6f4d2-2b85-4678-8972-d5d43a6216ab",
-      src: "https://analytics.notes.nayanpatel.net/umami.js",
-    },
-    clarity: { ID: "9hfzg8mbot" },
+<!-- Hack for highlighting menu links with anchor tags -->
 
-    metadatas: [
-      { name: 'og:image', content: 'https://meta-image.vercel.app/Digital%20Support%20Services%20Notes!.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fnotes.nayanpatel.net%2Fsitelogo.svg&widths=250&heights=250' },
-      { name: 'theme-color', content: '#5fa0ff' },
-      { name: 'twitter:card', content: 'summary' }
-    ],
+<HashChange
+  onLoad={() => {
+    const topLink = document.querySelector(
+      'a.menu__link[href="/docs/home/introduction"]'
+    );
+    if (topLink) {
+      topLink.onclick = (e) => {
+        document
+          .querySelectorAll('a.menu__link')
+          ?.forEach((link) => link?.classList.remove('menu__link--active'));
+        e.target.classList.add('menu__link--active');
+      };
+    }
+  }}
+  onChange={() => {
+    const { hash } = window.location;
+    if (hash < 2) return;
+    document
+      .querySelectorAll('a.menu__link')
+      ?.forEach((link) => link.classList.remove('menu__link--active'));
+    let link =
+      document.querySelector(`a.menu__link[href="${hash}"]`) ??
+      document.querySelector('a.menu__link[href="/docs/home/introduction"]');
+    link?.classList.add('menu__link--active');
+  }}
+/>
 
-    algolia: {
-      appId: 'T2T780TWHU',
-      apiKey: '99a14a43d86b4d0cb8f8608e65b3edaf',
-      indexName: 'notes-nayanpatel',
-      contextualSearch: true,
-    },
 
-    announcementBar: {
-      id: 'beta',
-      content: "😲 笔记浏览量已突破 <strong>2万+</strong>！感谢支持 🙏",
-      backgroundColor: '#fafbfc',
-      textColor: '#091E42',
-      isCloseable: true,
-    },
+## 快速开始
 
-    colorMode: {
-      defaultMode: 'light',
-      disableSwitch: true,
-    },
+<div className="grid xl:grid-cols-6 gap-4">
 
-    navbar: {
-      title: '数字支持服务笔记',
-      hideOnScroll: false,
-      logo: {
-        alt: '数字支持服务笔记',
-        src: '/img/logonobg.png',
-      },
-      items: [
-        { label: '首页', to: '/', activeBaseRegex: '(^/docs)' },
-        {
-          type: 'dropdown',
-          label: '笔记',
-          position: 'left',
-          items: [
-            { label: '业务背景', to: '/business/About-business', activeBasePath: '/business' },
-            { label: '数据', to: '/data/About-data', activeBasePath: '/data' },
-            { label: '数字环境', to: '/digital-environments/About-digital-environments', activeBasePath: '/digital-environments' },
-            { label: '规划', to: '/planning/About-planning', activeBasePath: '/planning' },
-            { label: '多元与包容', to: '/divertisty-and-inclusion/About-divertisty-and-inclusion', activeBasePath: '/divertisty-and-inclusion' },
-            { label: '法规', to: '/legislation/About-legislation', activeBasePath: '/legislation' },
-            { label: '职业', to: '/careers/About-careers', activeBasePath: '/careers' },
-            { label: '沟通', to: '/communication/About-communication', activeBasePath: '/communication' },
-            { label: '文化', to: '/culture/About-culture', activeBasePath: '/culture' },
-            { label: '数字分析', to: '/digital-analysis/About-digital-analysis', activeBasePath: '/digital-analysis' },
-            { label: '故障分析', to: '/fault-analysis/About-fault-analysis', activeBasePath: '/fault-analysis' },
-            { label: '学习', to: '/learning/About-learning', activeBasePath: '/learning' },
-            { label: '安全', to: '/security/About-security', activeBasePath: '/security' },
-            { label: '测试', to: '/testing/About-testing', activeBasePath: '/testing' },
-            { label: '工具', to: '/tools/About-tools', activeBasePath: '/tools' },
-            { label: 'ESP', to: '/esp/About-esp', activeBasePath: '/esp' },
-          ]
-        },
-        {
-          type: 'dropdown',
-          label: '工具',
-          position: 'left',
-          items: [
-            { label: '背景图标', to: '/backdropicons', activeBasePath: '/backdropicons' },
-            { label: '数据分析', href: 'https://analytics.notes.nayanpatel.net/share/NmRzIAly/Digital%20Support%20Notes' },
-          ]
-        },
-        { to: '/feature-requests', label: '功能建议 →', position: 'left', className: 'feature-req' },
-        { href: '#', position: 'right', label: '更新日志', 'data-canny-changelog': 'true' },
-        { href: 'https://github.com/Nayan-Web/Digital-Support-Notes', position: 'right', className: 'header-github-link', 'aria-label': 'GitHub 仓库' },
-        { href: 'https://www.producthunt.com/posts/digital-support-notes', position: 'right', className: 'header-prod-link', 'aria-label': 'Product Hunt' },
-      ],
-    },
+<GetStartedCard
+  title="业务背景"
+  className="xl:col-span-2 from-[#4B6CB7] to-[#3d6e25]"
+  getStartedLink="/business/About-business"
+  repoLink="/business/About-business"
+  bgClassName="h-48 rotate-[-28deg] right-[-48px] bottom-[-6rem]"
+/>
+<GetStartedCard
+  title="数据"
+  className="xl:col-span-2 from-[#3b5694] to-[#7d3059]"
+  getStartedLink="/data/About-data"
+  repoLink="/data/About-data"
+  bgClassName="h-48 rotate-[-28deg] right-[-48px] bottom-[-6rem]"
+/>
+<GetStartedCard
+  title="数字环境"
+  className="xl:col-span-2 from-[#3b5694] to-[#296b69]"
+  getStartedLink="/digital-environments/About-digital-environments"
+  repoLink="/digital-environments/About-digital-environments"
+  bgClassName="h-48 rotate-[-28deg] right-[-48px] bottom-[-6rem]"
+/>
+</div>
 
-    hideableSidebar: true,
-    prism: {
-      additionalLanguages: ['dart', 'ruby', 'groovy', 'kotlin', 'java', 'swift', 'objectivec'],
-      theme: require('prism-react-renderer/themes/vsDark'),
-    },
-  },
+<!-- ### Pick a client SDK
 
-  presets: [
-    [
-      '@docusaurus/preset-classic',
-      {
-        docs: {
-          path: 'docs/main',
-          id: 'default',
-          routeBasePath: 'docs',
-          sidebarPath: require.resolve('./sidebars/sidebars-docs.js'),
-          ...pageOptions,
-        },
-        blog: false,
-      },
-    ],
-  ],
+<div className="grid xl:grid-cols-6 gap-4">
 
-  plugins: [
-    'docusaurus-plugin-umami',
-    'docusaurus-plugin-clarity',
-    require('./src/featureRequests/FeatureRequestsPlugin'),
-    tailwindPlugin,
-    webpackPlugin,
-    'docusaurus-plugin-sass',
+<GridLink
+  to="/react/quickstart"
+  className="xl:col-span-3 py-6"
+  title="Client SDK"
+  Icon={
+    <ReactIcon className="h-10 mr-4" />
+  }
+/>
 
-    ['@docusaurus/plugin-content-docs', { id: 'business', path: 'docs/business', routeBasePath: 'business', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'data', path: 'docs/data', routeBasePath: 'data', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'digital-environments', path: 'docs/digital-environments', routeBasePath: 'digital-environments', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'planning', path: 'docs/planning', routeBasePath: 'planning', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'divertisty-and-inclusion', path: 'docs/divertisty-and-inclusion', routeBasePath: 'divertisty-and-inclusion', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'legislation', path: 'docs/legislation', routeBasePath: 'legislation', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'careers', path: 'docs/careers', routeBasePath: 'careers', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'communication', path: 'docs/communication', routeBasePath: 'communication', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'culture', path: 'docs/culture', routeBasePath: 'culture', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'digital-analysis', path: 'docs/digital-analysis', routeBasePath: 'digital-analysis', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'fault-analysis', path: 'docs/fault-analysis', routeBasePath: 'fault-analysis', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'learning', path: 'docs/learning', routeBasePath: 'learning', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'security', path: 'docs/security', routeBasePath: 'security', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'testing', path: 'docs/testing', routeBasePath: 'testing', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'tools', path: 'docs/tools', routeBasePath: 'tools', ...pageOptions }],
-    ['@docusaurus/plugin-content-docs', { id: 'esp', path: 'docs/esp', routeBasePath: 'esp', ...pageOptions }],
-  ],
-};
+</div> -->
+
+## 最近更新
+
+<div className="grid xl:grid-cols-6 gap-4">
+
+<GridLink
+  to="/testing/testing/white-box"
+  className="xl:col-span-2 py-4"
+  title="⬜ 白盒测试"
+  subtitle="新增白盒测试页面"
+/>
+
+<GridLink
+  to="/tools/mis-dashboard"
+  className="xl:col-span-2 py-4"
+  title="🖥️ MIS 仪表板"
+  subtitle="新增 MIS 仪表板页面"
+/>
+</div>
