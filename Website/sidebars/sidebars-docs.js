@@ -2,86 +2,86 @@ module.exports = {
   mySidebar: [
     {
       type: 'category',
-      label: 'Home',
+      label: '首页',
       items: ['home/introduction', 'home/contributing'],
     },
     {
       type: 'category',
-      label: 'Topics',
+      label: '主题',
       items: [
         {
           type: 'link',
-          label: '💼 Business Context',
+          label: '💼 业务背景',
           href: '/business/About-business',
         },
         {
           type: 'link',
-          label: '📊 Data',
+          label: '📊 数据',
           href: '/data/About-data',
         },
         {
           type: 'link',
-          label: '💻 Digital Environments',
+          label: '💻 数字环境',
           href: '/digital-environments/About-digital-environments',
         },
         {
           type: 'link',
-          label: '📅 Planning',
+          label: '📅 规划',
           href: '/planning/About-planning',
         },
         {
           type: 'link',
-          label: '👊 Diversity and Inclusion',
+          label: '👊 多元与包容',
           href: '/divertisty-and-inclusion/About-divertisty-and-inclusion',
         },
         {
           type: 'link',
-          label: '📜 Legislation',
+          label: '📜 法规',
           href: '/legislation/About-legislation',
         },
         {
           type: 'link',
-          label: '📇 Careers',
+          label: '📇 职业',
           href: '/careers/About-careers',
         },
         {
           type: 'link',
-          label: '🗣️ Communication',
+          label: '🗣️ 沟通',
           href: '/communication/About-communication',
         },
         {
           type: 'link',
-          label: '🧫 Culture',
+          label: '🧫 文化',
           href: '/culture/About-culture',
         },
         {
           type: 'link',
-          label: '⛈️ Digital Analysis',
+          label: '⛈️ 数字分析',
           href: '/digital-analysis/About-digital-analysis',
         },
         {
           type: 'link',
-          label: '🔎 Fault Analysis',
+          label: '🔎 故障分析',
           href: '/fault-analysis/About-fault-analysis',
         },
         {
           type: 'link',
-          label: '📙 Learning',
+          label: '📙 学习',
           href: '/learning/About-learning',
         },
         {
           type: 'link',
-          label: '🛡️ Security',
+          label: '🛡️ 安全',
           href: '/security/About-security',
         },
         {
           type: 'link',
-          label: '🧪 Testing',
+          label: '🧪 测试',
           href: '/testing/About-testing',
         },
         {
           type: 'link',
-          label: '🧰 Tools',
+          label: '🧰 工具',
           href: '/tools/About-tools',
         },
         {
