@@ -3,7 +3,7 @@ const { tailwindPlugin, webpackPlugin } = require('./src/plugins');
 const isDev = process.env.NODE_ENV === 'development';
 const pageRef = require('./src/plugins/pageRef');
 
-// 通用文档配置
+// 文档通用配置
 const pageOptions = {
   sidebarCollapsible: false,
   editUrl: 'https://github.com/playoo/Digital-Support-Notes/edit/main/Website/',
@@ -14,14 +14,12 @@ const pageOptions = {
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  // 全局脚本
   scripts: [
     { src: "https://status.notes.nayanpatel.net/widget/script.js" }
   ],
 
-  // 站点基础（标题/标语可保留英文）
-  title: 'Digital Support Services Notes',
-  tagline: 'An awesome textbook alternative, that you can contribute to! 🚀',
+  title: '数字支持服务笔记',
+  tagline: '欢迎贡献笔记，一起学习成长！🚀',
   url: 'https://notes.nayanpatel.net',
   baseUrl: '/',
   onBrokenLinks: 'warn',
@@ -31,35 +29,19 @@ module.exports = {
   projectName: 'Digital-Support-Notes',
   clientModules: [require.resolve('./src/css/tailwind.css')],
 
-  // 👇 核心：设置默认语言为简体中文
-  i18n: {
-    defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
-    localeConfigs: {
-      'zh-Hans': {
-        label: '简体中文',
-        direction: 'ltr',
-        htmlLang: 'zh-Hans',
-      },
-    },
-  },
-
   themeConfig: {
-    // 统计
     umami: {
       websiteid: "67a6f4d2-2b85-4678-8972-d5d43a6216ab",
       src: "https://analytics.notes.nayanpatel.net/umami.js",
     },
     clarity: { ID: "9hfzg8mbot" },
 
-    // SEO
     metadatas: [
       { name: 'og:image', content: 'https://meta-image.vercel.app/Digital%20Support%20Services%20Notes!.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fnotes.nayanpatel.net%2Fsitelogo.svg&widths=250&heights=250' },
       { name: 'theme-color', content: '#5fa0ff' },
       { name: 'twitter:card', content: 'summary' }
     ],
 
-    // 搜索（Algolia 界面会自动随 locale 汉化）
     algolia: {
       appId: 'T2T780TWHU',
       apiKey: '99a14a43d86b4d0cb8f8608e65b3edaf',
@@ -67,7 +49,6 @@ module.exports = {
       contextualSearch: true,
     },
 
-    // 顶部公告（汉化）
     announcementBar: {
       id: 'beta',
       content: "😲 笔记浏览量已突破 <strong>2万+</strong>！感谢支持 🙏",
@@ -76,13 +57,11 @@ module.exports = {
       isCloseable: true,
     },
 
-    // 强制浅色模式
     colorMode: {
       defaultMode: 'light',
       disableSwitch: true,
     },
 
-    // 导航栏（全汉化）
     navbar: {
       title: '数字支持服务笔记',
       hideOnScroll: false,
@@ -92,7 +71,6 @@ module.exports = {
       },
       items: [
         { label: '首页', to: '/', activeBaseRegex: '(^/docs)' },
-        // 笔记下拉
         {
           type: 'dropdown',
           label: '笔记',
@@ -114,9 +92,8 @@ module.exports = {
             { label: '测试', to: '/testing/About-testing', activeBasePath: '/testing' },
             { label: '工具', to: '/tools/About-tools', activeBasePath: '/tools' },
             { label: 'ESP', to: '/esp/About-esp', activeBasePath: '/esp' },
-          ],
+          ]
         },
-        // 工具下拉
         {
           type: 'dropdown',
           label: '工具',
@@ -124,21 +101,16 @@ module.exports = {
           items: [
             { label: '背景图标', to: '/backdropicons', activeBasePath: '/backdropicons' },
             { label: '数据分析', href: 'https://analytics.notes.nayanpatel.net/share/NmRzIAly/Digital%20Support%20Notes' },
-          ],
+          ]
         },
         { to: '/feature-requests', label: '功能建议 →', position: 'left', className: 'feature-req' },
         { href: '#', position: 'right', label: '更新日志', 'data-canny-changelog': 'true' },
         { href: 'https://github.com/Nayan-Web/Digital-Support-Notes', position: 'right', className: 'header-github-link', 'aria-label': 'GitHub 仓库' },
         { href: 'https://www.producthunt.com/posts/digital-support-notes', position: 'right', className: 'header-prod-link', 'aria-label': 'Product Hunt' },
-
-        // 可选：语言切换（如果你以后要加英文）
-        // { type: 'localeDropdown', position: 'right' },
       ],
     },
 
     hideableSidebar: true,
-
-    // 代码高亮
     prism: {
       additionalLanguages: ['dart', 'ruby', 'groovy', 'kotlin', 'java', 'swift', 'objectivec'],
       theme: require('prism-react-renderer/themes/vsDark'),
@@ -169,7 +141,6 @@ module.exports = {
     webpackPlugin,
     'docusaurus-plugin-sass',
 
-    // 多文档实例（已修正 diversity 拼写）
     ['@docusaurus/plugin-content-docs', { id: 'business', path: 'docs/business', routeBasePath: 'business', ...pageOptions }],
     ['@docusaurus/plugin-content-docs', { id: 'data', path: 'docs/data', routeBasePath: 'data', ...pageOptions }],
     ['@docusaurus/plugin-content-docs', { id: 'digital-environments', path: 'docs/digital-environments', routeBasePath: 'digital-environments', ...pageOptions }],
